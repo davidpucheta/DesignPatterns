@@ -2,6 +2,10 @@ package com.davidpucheta;
 
 import com.davidpucheta.memento.Editor;
 import com.davidpucheta.memento.History;
+import com.davidpucheta.state.BrushTool;
+import com.davidpucheta.state.Canvas;
+import com.davidpucheta.state.EraserTool;
+import com.davidpucheta.state.SelectionTool;
 
 public class Main {
 
@@ -47,6 +51,21 @@ public class Main {
 		editor.restoreState(history.pop());
 
 		System.out.println(editor.getContent());
+
+		//State pattern
+		var canvas = new Canvas();
+		canvas.setCurrentTool(new SelectionTool());
+		canvas.mouseDown();
+		canvas.mouseUp();
+
+		canvas.setCurrentTool(new BrushTool());
+		canvas.mouseDown();
+		canvas.mouseUp();
+
+		canvas.setCurrentTool(new EraserTool());
+		canvas.mouseDown();
+		canvas.mouseUp();
+
     }
 
     public static TaxCalculator getCalculator() {
