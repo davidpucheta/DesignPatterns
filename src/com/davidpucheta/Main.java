@@ -11,17 +11,19 @@ public class Main {
 		TaxCalculator calculator = getCalculator();
 		calculator.calculateTax();
 
-		//Encapsulation
+		//Encapsulation 1st principle of OOP
 		var account = new Account();
 		account.deposit(10);
 		account.withdraw(5);
 		System.out.println(account.getBalance());
 
-		//Abstraction
+		//Abstraction 2nd principle of OOP
 		var mailService = new MailService();
 		mailService.sendEmail();
 
 		//Inheritance
+		var textBox = new TextBox();
+		textBox.enable();
 
     }
 
