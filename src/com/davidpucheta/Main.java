@@ -1,5 +1,8 @@
 package com.davidpucheta;
 
+import com.davidpucheta.memento.Editor;
+import com.davidpucheta.memento.History;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -28,6 +31,22 @@ public class Main {
 		//Polymorphism - 4th principle of OOP
 		drawUIControl(new CheckBox());
 		drawUIControl(new TextBox());
+
+		//Memento pattern
+		var editor = new Editor();
+		var history = new History();
+
+		editor.setContent("a");
+		history.push(editor.createState());
+
+		editor.setContent("b");
+		history.push(editor.createState());
+
+		editor.setContent("c");
+		editor.restoreState(history.pop());
+		editor.restoreState(history.pop());
+
+		System.out.println(editor.getContent());
     }
 
     public static TaxCalculator getCalculator() {
